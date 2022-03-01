@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class ReadCSV {
 
-	public static void main(String[] args) {
+	public List<Question> readCSVFile() {
 		/**
 		 * ./Material/WWM.csv
 		 */
@@ -51,10 +51,10 @@ public class ReadCSV {
 		Collections.sort(questions);
 		assignAnswersToQuestions(questions);
 
-		System.out.println(questions.get(1));
-		System.out.println(questions.get(911));
-
-		// Was erwarten wir in der Ausgabe?
+//		System.out.println(questions.get(1));
+//		System.out.println(questions.get(911));
+		
+		return questions;
 	}
 
 	/**

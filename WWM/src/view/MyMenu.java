@@ -32,6 +32,7 @@ public class MyMenu extends JMenuBar implements ActionListener {
 	JButton ok = new JButton("OK");
 	JButton cancel = new JButton("Abbrechen");
 	
+	
 	RightPanel nameLabel;
 	
 	public MyMenu() {
@@ -78,6 +79,7 @@ public class MyMenu extends JMenuBar implements ActionListener {
 			if(e.getSource() == ok) {
 				String storeName = enterName.getText();
 				nameLabel.setPlayerName(storeName);
+				nameLabel.displayNextQuestion();
 //				playerName.setText(storeName);
 //				rightPanel.getPlayerName().setText(storeName);
 				jd.setVisible(false);
