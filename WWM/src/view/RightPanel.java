@@ -26,12 +26,13 @@ public class RightPanel extends JPanel {
 	JLabel empty = new JLabel();
 	JLabel playerName = new JLabel("", SwingConstants.CENTER);
 	
-	JLabel questionL = new JLabel();
+	JLabel questionL = new JLabel("", SwingConstants.CENTER);
 	JokerButton jokerBtns = new JokerButton();
-	AnswerButton answerBtns = new AnswerButton();
+	AnswerButton answerBtns = new AnswerButton(this);
 	
 	List<Question> questions = new ReadCSV().readCSVFile();
 	int currentQLevel = 1;
+	int rightAnswer;
 	
 	public RightPanel() {
 		
@@ -70,6 +71,16 @@ public class RightPanel extends JPanel {
 	void setPlayerName(String playerName){
 		this.playerName.setText(playerName);
 	}
+	
+	
+	
+	public int getRightAnswer() {
+		return rightAnswer;
+	}
+
+	public void setRightAnswer(int rightAnswer) {
+		this.rightAnswer = rightAnswer;
+	}
 
 	Question nextQuestion(int category) {
 		Random r = new Random();
@@ -83,12 +94,12 @@ public class RightPanel extends JPanel {
 		return q;
 	}
 	
-	void displayNextQuestion() {
+	public void displayNextQuestion() {
 		Question question = this.nextQuestion(currentQLevel);
 		Random r = new Random();
-		int rightQuestion = r.nextInt(4);
+		rightAnswer = r.nextInt(4);
 		questionL.setText(question.getText());
-		switch(rightQuestion) {
+		switch(rightAnswer) {
 			case 0: answerBtns.getAnswerA().setText(question.getRightAnswer());
 			break;
 			case 1: answerBtns.getAnswerB().setText(question.getRightAnswer());
@@ -100,7 +111,7 @@ public class RightPanel extends JPanel {
 		}
 		int temp = 0;
 		for(int i = 0; i<4; i++) {
-			if(i == rightQuestion) {
+			if(i == rightAnswer) {
 				
 			}
 			else {

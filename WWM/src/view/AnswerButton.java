@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import control.ActionsListenerButton;
+
 public class AnswerButton extends JPanel implements ActionListener {
 	
 	JButton answerA = new JButton();
@@ -16,7 +18,8 @@ public class AnswerButton extends JPanel implements ActionListener {
 	JButton answerD = new JButton();
 	
 	
-	public AnswerButton() {
+	
+	public AnswerButton(RightPanel rp) {
 
 		
 		this.setLayout(new GridLayout(2,2));
@@ -25,6 +28,11 @@ public class AnswerButton extends JPanel implements ActionListener {
 		this.add(answerB);
 		this.add(answerC);
 		this.add(answerD);
+		
+		answerA.addActionListener(new ActionsListenerButton(rp, 0));
+		answerB.addActionListener(new ActionsListenerButton(rp, 1));
+		answerC.addActionListener(new ActionsListenerButton(rp, 2));
+		answerD.addActionListener(new ActionsListenerButton(rp, 3));
 	}
 	
 	
@@ -82,3 +90,5 @@ public class AnswerButton extends JPanel implements ActionListener {
 		
 	}
 }
+
+
