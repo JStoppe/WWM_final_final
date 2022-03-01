@@ -177,7 +177,6 @@ public class GUI extends JFrame implements ActionListener {
 	empty.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 	playerName.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 	
-	
 	question.setPreferredSize(new Dimension(Integer.MAX_VALUE,100));
 	question.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 	

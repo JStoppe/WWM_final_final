@@ -19,6 +19,8 @@ public class MyFrame extends JFrame {
 		MyMenu menu = new MyMenu();
 		this.setJMenuBar(menu);
 		
+		menu.setNamelabel(((MyPanel) mainPanel).getRightPanel());
+		
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
 		
