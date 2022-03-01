@@ -52,6 +52,10 @@ public class MyMenu extends JMenuBar implements ActionListener {
 		newGame.addActionListener(this);
 
 	}
+	
+	void setNamelabel(JPanel nl){
+		nameLabel = (RightPanel) nl;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -85,10 +89,4 @@ public class MyMenu extends JMenuBar implements ActionListener {
 				jd.setVisible(false);
 		} 		
 	}
-	
-	void setNamelabel(JPanel nl){
-		nameLabel = (RightPanel) nl;
-	}
-	
-
 }

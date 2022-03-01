@@ -26,9 +26,6 @@ public class RightPanel extends JPanel {
 	AnswerButton answerBtns = new AnswerButton();
 	
 //	Question q = new Question();
-	void setPlayerName(String playerName){
-		this.playerName.setText(playerName);
-	}
 	
 	public RightPanel() {
 		
@@ -62,5 +59,9 @@ public class RightPanel extends JPanel {
 		
 	    this.add(rightTop, BorderLayout.NORTH);
 	    this.add(rightBottom, BorderLayout.CENTER);
+	}
+	
+	void setPlayerName(String playerName){
+		this.playerName.setText(playerName);
 	}
 }
