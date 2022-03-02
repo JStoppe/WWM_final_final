@@ -128,7 +128,7 @@ public class RightPanel extends JPanel {
 				temp++;
 			}
 		}
-		
+		currentQLevel++;
 		
 	}
 }
