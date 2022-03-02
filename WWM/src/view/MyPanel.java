@@ -6,12 +6,14 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 public class MyPanel extends JPanel {
-	JPanel rightPanel;
+	RightPanel rightPanel;
 	
 	public MyPanel() {
 		
-		JPanel leftPanel = new LeftPanel();
+		
 		rightPanel = new RightPanel();
+		LeftPanel leftPanel = new LeftPanel(rightPanel);
+		rightPanel.setLPanel(leftPanel);
 		
 		this.setLayout(new BorderLayout());
 		

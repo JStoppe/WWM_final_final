@@ -31,8 +31,8 @@ public class ActionsListenerButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(rp.getRightAnswer() == buttonNumber && rp.isFirstQ()) {
-			rp.displayNextQuestion();
 			rp.increaseScore();
+			rp.displayNextQuestion();
 		}
 		else if(rp.isFirstQ()){
 			JPanel jp = new JPanel();

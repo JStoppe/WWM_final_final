@@ -18,10 +18,8 @@ public class AnswerButton extends JPanel implements ActionListener {
 	JButton answerD = new JButton();
 	
 	
-	
 	public AnswerButton(RightPanel rp) {
 
-		
 		this.setLayout(new GridLayout(2,2));
 		this.setPreferredSize(new Dimension(Integer.MAX_VALUE,200));
 		this.add(answerA);
@@ -34,56 +32,38 @@ public class AnswerButton extends JPanel implements ActionListener {
 		answerC.addActionListener(new ActionsListenerButton(rp, 2));
 		answerD.addActionListener(new ActionsListenerButton(rp, 3));
 	}
-	
-	
 
 	public JButton getAnswerA() {
 		return answerA;
 	}
 
-
-
 	public void setAnswerA(JButton answerA) {
 		this.answerA = answerA;
 	}
-
-
 
 	public JButton getAnswerB() {
 		return answerB;
 	}
 
-
-
 	public void setAnswerB(JButton answerB) {
 		this.answerB = answerB;
 	}
-
-
 
 	public JButton getAnswerC() {
 		return answerC;
 	}
 
-
-
 	public void setAnswerC(JButton answerC) {
 		this.answerC = answerC;
 	}
-
-
 
 	public JButton getAnswerD() {
 		return answerD;
 	}
 
-
-
 	public void setAnswerD(JButton answerD) {
 		this.answerD = answerD;
 	}
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

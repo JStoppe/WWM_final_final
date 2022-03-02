@@ -20,6 +20,7 @@ public class RightPanel extends JPanel {
 		
 	JPanel rightTop = new JPanel();
 	JPanel rightBottom = new JPanel();
+	LeftPanel lp = new LeftPanel(this);
 	
 	JLabel player = new JLabel();
 	JLabel konto = new JLabel("", SwingConstants.CENTER);
@@ -31,10 +32,10 @@ public class RightPanel extends JPanel {
 	AnswerButton answerBtns = new AnswerButton(this);
 	
 	List<Question> questions = new ReadCSV().readCSVFile();
-	int currentQLevel = 1;
-	int rightAnswer;
-	int score = 0;
-	boolean firstQ = false;
+	private int currentQLevel = 1;
+	private int rightAnswer;
+	private int score = 0;
+	private boolean firstQ = false;
 	
 	public RightPanel() {
 		
@@ -70,6 +71,14 @@ public class RightPanel extends JPanel {
 	    this.add(rightBottom, BorderLayout.CENTER);
 	}
 	
+	public int getCurrentQLevel() {
+		return currentQLevel;
+	}
+
+	public void setCurrentQLevel(int currentQLevel) {
+		this.currentQLevel = currentQLevel;
+	}
+
 	public boolean isFirstQ() {
 		return firstQ;
 	}
@@ -90,6 +99,10 @@ public class RightPanel extends JPanel {
 		this.rightAnswer = rightAnswer;
 	}
 
+	public void setLPanel(LeftPanel lp){
+		this.lp = lp;	
+	}
+	
 	Question nextQuestion(int category) {
 		Random r = new Random();
 		Question q;
@@ -178,6 +191,7 @@ public class RightPanel extends JPanel {
 	
 	public void displayScore() {
 		konto.setText(Integer.toString(score));
+		lp.changePic();
 	}
 	
 	public int getFinalScore() {
@@ -195,6 +209,7 @@ public class RightPanel extends JPanel {
 		}
 	}
 
+	
 }
 
 
