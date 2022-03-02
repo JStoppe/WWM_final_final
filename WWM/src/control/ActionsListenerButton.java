@@ -53,7 +53,6 @@ public class ActionsListenerButton implements ActionListener{
 			jd.setVisible(true);
 		}
 		if(e.getSource() == playAgain) {
-			String storeName = showWin.getText();
 			rp.resetGame();
 //			playerName.setText(storeName);
 //			rightPanel.getPlayerName().setText(storeName);
