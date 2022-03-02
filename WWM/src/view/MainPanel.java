@@ -5,10 +5,10 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
-public class MyPanel extends JPanel {
+public class MainPanel extends JPanel {
 	RightPanel rightPanel;
 	
-	public MyPanel() {
+	public MainPanel() {
 		
 		
 		rightPanel = new RightPanel();

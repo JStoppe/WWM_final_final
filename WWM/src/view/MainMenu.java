@@ -15,7 +15,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class MyMenu extends JMenuBar implements ActionListener {
+public class MainMenu extends JMenuBar implements ActionListener {
 	
 	JMenu start = new JMenu("Start");
 	JMenu options = new JMenu("Optionen");
@@ -35,7 +35,7 @@ public class MyMenu extends JMenuBar implements ActionListener {
 	
 	RightPanel nameLabel;
 	
-	public MyMenu() {
+	public MainMenu() {
 		
 		this.add(start);
 		this.add(options);
@@ -63,6 +63,7 @@ public class MyMenu extends JMenuBar implements ActionListener {
 		if(e.getSource() == newGame) {
 			JPanel jp = new JPanel();
 			ok.addActionListener(this);
+			cancel.addActionListener(this);
 			
 			jd.setLayout(new BorderLayout());
 			jd.add(enterName, BorderLayout.PAGE_START);
@@ -73,6 +74,7 @@ public class MyMenu extends JMenuBar implements ActionListener {
 			jd.add(jp);
 			jd.setSize(350, 100);
 			jd.setTitle("Bitte geben Sie Ihren Namen ein");
+			jd.getRootPane().setDefaultButton(ok);
 			jd.setLocationRelativeTo(null);
 			jd.setResizable(false);
 			jd.setVisible(true);
@@ -81,14 +83,13 @@ public class MyMenu extends JMenuBar implements ActionListener {
 				String storeName = enterName.getText();
 				nameLabel.setPlayerName(storeName);
 				nameLabel.displayNextQuestion();
+//				nameLabel.resetGame();
 //				playerName.setText(storeName);
 //				rightPanel.getPlayerName().setText(storeName);
 				jd.setVisible(false);
-//				String frage = "Frage 1: Hier steht nun die erste Frage?";
-//				question.setText(frage);
 		}
 			if(e.getSource() == cancel) {
-//				jd.dispose();
+				jd.dispose();
 //				jd.setVisible(false);
 		} 		
 	}

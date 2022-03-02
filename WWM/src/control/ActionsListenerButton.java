@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import view.RightPanel;
 
@@ -19,7 +20,7 @@ public class ActionsListenerButton implements ActionListener{
 	int buttonNumber;
 	
 	JDialog jd = new JDialog();
-	JLabel showWin = new JLabel();
+	JLabel showWin = new JLabel("", SwingConstants.CENTER);
 	JButton playAgain = new JButton("nochmal spielen");
 	JButton cancel = new JButton("Abbrechen");
 	
@@ -37,9 +38,10 @@ public class ActionsListenerButton implements ActionListener{
 		else if(rp.isFirstQ()){
 			JPanel jp = new JPanel();
 			playAgain.addActionListener(this);
+			cancel.addActionListener(this);
 			
 			jd.setLayout(new BorderLayout());
-			showWin.setText(Integer.toString(rp.getFinalScore()));
+			showWin.setText("Dein Gewinn beträgt: " + Integer.toString(rp.getFinalScore()));
 			jd.add(showWin, BorderLayout.PAGE_START);
 			jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
 			jp.add(Box.createHorizontalGlue());
@@ -48,6 +50,7 @@ public class ActionsListenerButton implements ActionListener{
 			jd.add(jp);
 			jd.setSize(350, 100);
 			jd.setTitle("Du hast verloren!");
+			jd.getRootPane().setDefaultButton(playAgain);
 			jd.setLocationRelativeTo(null);
 			jd.setResizable(false);
 			jd.setVisible(true);
@@ -61,7 +64,7 @@ public class ActionsListenerButton implements ActionListener{
 //			question.setText(frage);
 	}
 		if(e.getSource() == cancel) {
-//			jd.dispose();
+			jd.dispose();
 //			jd.setVisible(false);
 	} 	
 	}

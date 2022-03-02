@@ -13,13 +13,13 @@ public class MyFrame extends JFrame {
 		this.setSize(820,650);
 		this.getContentPane().setBackground(new Color(255,255,255));
 
-		JPanel mainPanel = new MyPanel();
+		JPanel mainPanel = new MainPanel();
 		this.setContentPane(mainPanel);
 		
-		MyMenu menu = new MyMenu();
+		MainMenu menu = new MainMenu();
 		this.setJMenuBar(menu);
 		
-		menu.setNamelabel(((MyPanel) mainPanel).getRightPanel());
+		menu.setNamelabel(((MainPanel) mainPanel).getRightPanel());
 		
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);

@@ -42,13 +42,22 @@ public class JokerButton extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == fifty) {
-			fifty.setBackground(Color.gray);
+			System.out.println("fifty pressed");
+			fifty.setBackground(Color.LIGHT_GRAY);
+			fifty.setForeground(Color.RED);
+			fifty.removeActionListener(this);
+//			fifty.setText("<html><font color = red>50/50</font></html>");
+//			fifty.setEnabled(false);
 		}
 		if(e.getSource() == publikum) {
-			publikum.setBackground(Color.gray);
+			publikum.setBackground(Color.LIGHT_GRAY);
+			publikum.setForeground(Color.RED);
+			publikum.removeActionListener(this);
 		}
 		if(e.getSource() == telefon) {
-			telefon.setBackground(Color.gray);
+			telefon.setBackground(Color.LIGHT_GRAY);
+			telefon.setForeground(Color.RED);
+			telefon.removeActionListener(this);
 		}
 	}
 }
