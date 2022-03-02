@@ -74,6 +74,7 @@ public class MyMenu extends JMenuBar implements ActionListener {
 			jd.setSize(350, 100);
 			jd.setTitle("Bitte geben Sie Ihren Namen ein");
 			jd.setLocationRelativeTo(null);
+			jd.setResizable(false);
 			jd.setVisible(true);
 		}
 			if(e.getSource() == ok) {
@@ -87,8 +88,8 @@ public class MyMenu extends JMenuBar implements ActionListener {
 //				question.setText(frage);
 		}
 			if(e.getSource() == cancel) {
-				jd.dispose();
-				jd.setVisible(false);
+//				jd.dispose();
+//				jd.setVisible(false);
 		} 		
 	}
 }

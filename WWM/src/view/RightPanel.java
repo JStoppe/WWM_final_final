@@ -22,7 +22,7 @@ public class RightPanel extends JPanel {
 	JPanel rightBottom = new JPanel();
 	
 	JLabel player = new JLabel();
-	JLabel konto = new JLabel();
+	JLabel konto = new JLabel("", SwingConstants.CENTER);
 	JLabel empty = new JLabel();
 	JLabel playerName = new JLabel("", SwingConstants.CENTER);
 	
@@ -33,6 +33,8 @@ public class RightPanel extends JPanel {
 	List<Question> questions = new ReadCSV().readCSVFile();
 	int currentQLevel = 1;
 	int rightAnswer;
+	int score = 0;
+	boolean firstQ = false;
 	
 	public RightPanel() {
 		
@@ -68,11 +70,17 @@ public class RightPanel extends JPanel {
 	    this.add(rightBottom, BorderLayout.CENTER);
 	}
 	
+	public boolean isFirstQ() {
+		return firstQ;
+	}
+
+	public void setFirstQ(boolean firstQ) {
+		this.firstQ = firstQ;
+	}
+
 	void setPlayerName(String playerName){
 		this.playerName.setText(playerName);
 	}
-	
-	
 	
 	public int getRightAnswer() {
 		return rightAnswer;
@@ -129,6 +137,64 @@ public class RightPanel extends JPanel {
 			}
 		}
 		currentQLevel++;
-		
+		if(!firstQ) {
+			firstQ = true;
+		}
 	}
+	
+	public void resetGame() {
+		currentQLevel = 1;
+		questionL.setText("");
+		answerBtns.getAnswerA().setText("");
+		answerBtns.getAnswerB().setText("");
+		answerBtns.getAnswerC().setText("");
+		answerBtns.getAnswerD().setText("");
+		this.displayNextQuestion();
+		score = 0;
+		displayScore();
+	}
+	
+	public void increaseScore() {
+		if(score == 0) {
+			score = 50;
+		}
+		else if(score == 200) {
+			score = 300;
+		}
+		else if(score == 300) {
+			score = 500;
+		}
+		else if(score == 64000) {
+			score = 125000;
+		}
+		else if(score == 125000) {
+			score = 500000;
+		}
+		else {
+			score = score * 2;
+		}
+		displayScore();
+	}
+	
+	public void displayScore() {
+		konto.setText(Integer.toString(score));
+	}
+	
+	public int getFinalScore() {
+		if(score == 1000000) {
+			return 1000000;
+		}
+		else if(score >= 16000) {
+			return 16000;
+		}
+		else if(score >= 500) {
+			return 500;
+		}
+		else {
+			return 0;
+		}
+	}
+
 }
+
+

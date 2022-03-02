@@ -16,9 +16,6 @@ public class ReadCSV {
 		 * ./Material/WWM.csv
 		 */
 		File file = new File("./resources/WWM.csv");
-		System.out.println(file.exists());
-		System.out.println(file.isDirectory());
-		System.out.println(file.isFile());
 
 		List<Question> questions = new ArrayList<>();
 
@@ -51,8 +48,6 @@ public class ReadCSV {
 		Collections.sort(questions);
 		assignAnswersToQuestions(questions);
 
-//		System.out.println(questions.get(1));
-//		System.out.println(questions.get(911));
 		
 		return questions;
 	}
