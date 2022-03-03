@@ -28,8 +28,8 @@ public class RightPanel extends JPanel {
 	JLabel playerName = new JLabel("", SwingConstants.CENTER);
 	
 	JLabel questionL = new JLabel("", SwingConstants.CENTER);
-	JokerButton jokerBtns = new JokerButton();
 	AnswerButton answerBtns = new AnswerButton(this);
+	JokerButton jokerBtns = new JokerButton(this, answerBtns);
 	
 	List<Question> questions = new ReadCSV().readCSVFile();
 	private int currentQLevel = 1;
