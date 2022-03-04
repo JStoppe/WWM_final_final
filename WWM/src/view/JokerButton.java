@@ -141,19 +141,35 @@ public class JokerButton extends JPanel implements ActionListener {
 //			int low = 10;
 //			int high = 50;
 //			int result = r.nextInt(high-low) + low;
+			int randRight = rand.nextInt(2);
 			int randBtn = rand.nextInt(4);
 			
-			switch(randBtn) {
-			case 0: rp.answerBtns.answerA.setBackground(Color.cyan);
-//					rp.answerBtns.answerA.setText(answerA.getText() + " " + result + "%");
-			break;
-			case 1: rp.answerBtns.answerB.setBackground(Color.cyan);
-			break;
-			case 2:	rp.answerBtns.answerC.setBackground(Color.cyan); 
-			break;
-			case 3: rp.answerBtns.answerD.setBackground(Color.cyan);
-			break;
-			}				
+			if(randRight == 1) {
+				switch(randBtn) {
+				case 0: rp.answerBtns.answerA.setBackground(Color.cyan);
+				break;
+				case 1: rp.answerBtns.answerB.setBackground(Color.cyan);
+				break;
+				case 2:	rp.answerBtns.answerC.setBackground(Color.cyan); 
+				break;
+				case 3: rp.answerBtns.answerD.setBackground(Color.cyan);
+				break;
+				}	
+			}
+			else {
+				int rightAnswer = rp.getRightAnswer();
+				switch(rightAnswer) {
+				case 0: rp.answerBtns.answerA.setBackground(Color.cyan);
+				break;
+				case 1: rp.answerBtns.answerB.setBackground(Color.cyan);
+				break;
+				case 2:	rp.answerBtns.answerC.setBackground(Color.cyan); 
+				break;
+				case 3: rp.answerBtns.answerD.setBackground(Color.cyan);
+				break;
+				}
+			}
+						
 		}
 	}
 	
