@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,7 +27,7 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 	
 	JMenu start = new JMenu("Start");
 	JMenu options = new JMenu("Optionen");
-	JMenu quick = new JMenu("Schnelles Spiel");
+	JMenuItem quick = new JMenuItem("Schnelles Spiel");
 	JMenu take = new JMenu("Gewinn nehmen");
 	
 	JMenuItem newGame = new JMenuItem("Neues Spiel");
@@ -37,6 +38,8 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 	JDialog jd = new JDialog();
 	JDialog tW = new JDialog();
 	JDialog eD = new JDialog();
+	JPanel jp = new JPanel();
+	JPanel jpE = new JPanel();
 	JTextField enterName = new JTextField();
 	JLabel takeScore = new JLabel("", SwingConstants.CENTER);
 	JLabel exitLabel = new JLabel("Wollen Sie wirklich das Spiel verlassen?", SwingConstants.CENTER);
@@ -45,6 +48,8 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 	JButton cancel = new JButton("Abbrechen");
 	JButton exit = new JButton("Exit");
 	String storeName;
+
+	
 	
 	RightPanel nameLabel;
 	
@@ -62,12 +67,35 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 		
 		this.add(Box.createHorizontalGlue());
 		this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		
+				
 		newGame.addActionListener(this);
 		exitGame.addActionListener(this);
-		quick.addMenuListener(this);
+		quick.addActionListener(this);
+//		quick.addMenuListener(this);
+		
 		take.addMenuListener(this);
-
+		
+		ok.addActionListener(this);
+		cancel.addActionListener(this);
+		exit.addActionListener(this);
+		
+		jd.setLayout(new BorderLayout());
+		jd.setTitle("Bitte geben Sie Ihren Namen ein");
+		jd.add(enterName, BorderLayout.PAGE_START);
+		jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
+		jp.add(Box.createHorizontalGlue());
+		jp.add(ok);
+		jp.add(cancel);
+		jd.add(jp);
+		
+		eD.setLayout(new BorderLayout());
+		eD.setTitle("Wollen Sie das Spiel verlassen?");
+		eD.add(exitLabel, BorderLayout.PAGE_START);
+		jpE.setLayout(new BoxLayout(jpE, BoxLayout.LINE_AXIS));
+		jpE.add(Box.createHorizontalGlue());
+		jpE.add(exit);
+		jpE.add(cancel);
+		eD.add(jpE);
 	}
 	
 	void setNamelabel(JPanel nl){
@@ -77,19 +105,7 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == newGame) {
-			JPanel jp = new JPanel();
-			ok.addActionListener(this);
-			cancel.addActionListener(this);
-			
-			jd.setLayout(new BorderLayout());
-			jd.add(enterName, BorderLayout.PAGE_START);
-			jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
-			jp.add(Box.createHorizontalGlue());
-			jp.add(ok);
-			jp.add(cancel);
-			jd.add(jp);
 			jd.setSize(350, 100);
-			jd.setTitle("Bitte geben Sie Ihren Namen ein");
 			jd.getRootPane().setDefaultButton(ok);
 			jd.setLocationRelativeTo(null);
 			jd.setResizable(false);
@@ -115,17 +131,6 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 				tW.setVisible(false);
 			}
 			if(e.getSource() == exitGame) {
-				JPanel jpE = new JPanel();
-				exit.addActionListener(this);
-				cancel.addActionListener(this);
-				
-				eD.setLayout(new BorderLayout());
-				eD.add(exitLabel, BorderLayout.PAGE_START);
-				jpE.setLayout(new BoxLayout(jpE, BoxLayout.LINE_AXIS));
-				jpE.add(Box.createHorizontalGlue());
-				jpE.add(exit);
-				jpE.add(cancel);
-				eD.add(jpE);
 				eD.setSize(350, 100);
 				eD.setTitle("Exit Game");
 				eD.getRootPane().setDefaultButton(exit);
@@ -137,13 +142,16 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 			if(e.getSource() == exit) {
 				System.exit(0);
 			}
+			if(e.getSource() == quick && storeName != null && !storeName.isEmpty()) {
+				nameLabel.resetGame();
+		}
 	}
 
 	@Override
 	public void menuSelected(MenuEvent e) {
-		if(e.getSource() == quick && storeName != null && !storeName.isEmpty()) {
-				nameLabel.resetGame();
-		}
+//		if(e.getSource() == quick && storeName != null && !storeName.isEmpty()) {
+//				nameLabel.resetGame();
+//		}
 		if(e.getSource() == take && storeName != null && !storeName.isEmpty()) {
 			JPanel jpW = new JPanel();
 			playAgain.addActionListener(this);
@@ -178,4 +186,6 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 }
