@@ -73,6 +73,7 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 		quick.addActionListener(this);
 //		quick.addMenuListener(this);
 		
+		
 		take.addMenuListener(this);
 		
 		ok.addActionListener(this);
@@ -81,11 +82,7 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 		
 		jd.setLayout(new BorderLayout());
 		jd.setTitle("Bitte geben Sie Ihren Namen ein");
-		jd.add(enterName, BorderLayout.PAGE_START);
 		jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
-		jp.add(Box.createHorizontalGlue());
-		jp.add(ok);
-		jp.add(cancel);
 		jd.add(jp);
 		
 		eD.setLayout(new BorderLayout());
@@ -106,6 +103,10 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == newGame) {
 			jd.setSize(350, 100);
+			jd.add(enterName, BorderLayout.PAGE_START);
+			jp.add(Box.createHorizontalGlue());
+			jp.add(ok);
+			jp.add(cancel);
 			jd.getRootPane().setDefaultButton(ok);
 			jd.setLocationRelativeTo(null);
 			jd.setResizable(false);
