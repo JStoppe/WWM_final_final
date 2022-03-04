@@ -12,11 +12,12 @@ import control.ActionsListenerButton;
 
 public class AnswerButton extends JPanel implements ActionListener {
 	
+	private static final long serialVersionUID = 1L;
+	
 	JButton answerA = new JButton();
 	JButton answerB = new JButton();
 	JButton answerC = new JButton();
 	JButton answerD = new JButton();
-	
 	
 	public AnswerButton(RightPanel rp) {
 
@@ -32,7 +33,7 @@ public class AnswerButton extends JPanel implements ActionListener {
 		answerC.addActionListener(new ActionsListenerButton(rp, 2));
 		answerD.addActionListener(new ActionsListenerButton(rp, 3));
 	}
-
+	
 	public JButton getAnswerA() {
 		return answerA;
 	}
@@ -64,7 +65,7 @@ public class AnswerButton extends JPanel implements ActionListener {
 	public void setAnswerD(JButton answerD) {
 		this.answerD = answerD;
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

@@ -10,7 +10,10 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+
 public class JokerButton extends JPanel implements ActionListener {
+	
+	private static final long serialVersionUID = 1L;
 	
 	JButton fifty = new JButton("50/50");
 	JButton publikum = new JButton("Publikum");
@@ -32,7 +35,6 @@ public class JokerButton extends JPanel implements ActionListener {
 		c.fill = GridBagConstraints.HORIZONTAL;
 		
 		c.ipady = 20;
-//		c.insets = new Insets(5,0,5,0);
 		c.weightx = 0.5;
 		c.gridx = 0;
 		c.gridy = 0;
@@ -58,7 +60,6 @@ public class JokerButton extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == fifty) {
-			System.out.println("fifty pressed");
 			fifty.setBackground(Color.LIGHT_GRAY);
 			fifty.setForeground(Color.RED);
 			fifty.removeActionListener(this);
@@ -78,18 +79,81 @@ public class JokerButton extends JPanel implements ActionListener {
 					break;
 				}
 			}
-//			fifty.setText("<html><font color = red>50/50</font></html>");
-//			fifty.setEnabled(false);
+		
+			for(int i = 0; i < 2; i++) {
+				int temporary;
+				if(i == 0) {
+					temporary = temp;
+				} else {
+					temporary = temp2;
+				}
+				switch(temporary) {
+				case 0: rp.answerBtns.answerA.setBackground(Color.LIGHT_GRAY);
+						rp.answerBtns.answerA.setEnabled(false);
+				break;
+				case 1: rp.answerBtns.answerB.setBackground(Color.LIGHT_GRAY);
+						rp.answerBtns.answerB.setEnabled(false);
+				break;
+				case 2: rp.answerBtns.answerC.setBackground(Color.LIGHT_GRAY);
+						rp.answerBtns.answerC.setEnabled(false);
+				break;
+				case 3: rp.answerBtns.answerD.setBackground(Color.LIGHT_GRAY);
+						rp.answerBtns.answerD.setEnabled(false);
+				break;
+				}				
+			}
+
 		}
 		if(e.getSource() == publikum) {
 			publikum.setBackground(Color.LIGHT_GRAY);
 			publikum.setForeground(Color.RED);
 			publikum.removeActionListener(this);
+			
+			Random r = new Random();
+			int low = 10;
+			int high = 80;
+			int result = r.nextInt(high-low) + low;
+			int randBtn = rand.nextInt(4);
+			
+			switch(randBtn) {
+			case 0: rp.answerBtns.answerA.setBackground(Color.cyan);
+					rp.answerBtns.answerA.setText(answerA.getText() + " " + result + "%");
+			break;
+			case 1: rp.answerBtns.answerB.setBackground(Color.cyan);
+					rp.answerBtns.answerB.setText(answerB.getText() + " " + result + "%");
+			break;
+			case 2:	rp.answerBtns.answerC.setBackground(Color.cyan); 
+					rp.answerBtns.answerC.setText(answerC.getText() + " " + result + "%");
+			break;
+			case 3: rp.answerBtns.answerD.setBackground(Color.cyan);
+					rp.answerBtns.answerD.setText(answerD.getText() + " " + result + "%");
+			break;
+			}		
 		}
+		
+		
 		if(e.getSource() == telefon) {
 			telefon.setBackground(Color.LIGHT_GRAY);
 			telefon.setForeground(Color.RED);
 			telefon.removeActionListener(this);
+			
+//			Random r = new Random();
+//			int low = 10;
+//			int high = 50;
+//			int result = r.nextInt(high-low) + low;
+			int randBtn = rand.nextInt(4);
+			
+			switch(randBtn) {
+			case 0: rp.answerBtns.answerA.setBackground(Color.cyan);
+//					rp.answerBtns.answerA.setText(answerA.getText() + " " + result + "%");
+			break;
+			case 1: rp.answerBtns.answerB.setBackground(Color.cyan);
+			break;
+			case 2:	rp.answerBtns.answerC.setBackground(Color.cyan); 
+			break;
+			case 3: rp.answerBtns.answerD.setBackground(Color.cyan);
+			break;
+			}				
 		}
 	}
 	

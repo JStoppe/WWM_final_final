@@ -46,11 +46,6 @@ public class Question implements Comparable<Question> {
 		this.wrongAnswers = new ArrayList<>();
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Question [getLevel()=" + getLevel() + ", getText()=" + getText() + ", getRightAnswer()="
-//				+ getRightAnswer() + "]";
-//	}
 
 	@Override
 	public String toString() {

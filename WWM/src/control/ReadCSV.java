@@ -12,16 +12,11 @@ import java.util.Random;
 public class ReadCSV {
 
 	public List<Question> readCSVFile() {
-		/**
-		 * ./Material/WWM.csv
-		 */
+
 		File file = new File("./resources/WWM.csv");
 
 		List<Question> questions = new ArrayList<>();
 
-		/**
-		 * Lesen der Daten aus der Datei
-		 */
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 
 			while (br.ready()) {
@@ -52,11 +47,6 @@ public class ReadCSV {
 		return questions;
 	}
 
-	/**
-	 * Jeder Frage in allen Kategorien werden falsche Antworten von Fragen der
-	 * selben Kategorie zugeordnet.
-	 * 
-	 */
 	private static void assignAnswersToQuestions(List<Question> questions) {
 		for (int category = 1; category < questions.get(questions.size() - 1).getLevel(); category++) {
 			List<String> categoryAnswers = determineAnswersFromCategory(questions, category);
@@ -66,10 +56,6 @@ public class ReadCSV {
 
 	}
 
-	/**
-	 * Zuweisen falscher Antworten zu einer Frage. Antworten per zufall von Fragen
-	 * der selben Kategorie
-	 */
 	private static void assignWrongAnswers(List<Question> questions, List<String> answers) {
 		for (int i = 0; i < questions.size(); i++) {
 			for (int j = 0; j < 3; j++) {
@@ -96,9 +82,6 @@ public class ReadCSV {
 		return resultQuestions;
 	}
 
-	/**
-	 * Ermitteln aller Antworten einer Kategorie
-	 */
 	private static List<String> determineAnswersFromCategory(List<Question> questions, int category) {
 
 		List<String> answers = new ArrayList<>();

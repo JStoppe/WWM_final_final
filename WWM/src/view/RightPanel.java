@@ -17,11 +17,13 @@ import control.ReadCSV;
 
 
 public class RightPanel extends JPanel {
-		
+
+	private static final long serialVersionUID = 1L;
+	
 	JPanel rightTop = new JPanel();
 	JPanel rightBottom = new JPanel();
 	LeftPanel lp = new LeftPanel(this);
-	
+
 	JLabel player = new JLabel();
 	JLabel konto = new JLabel("", SwingConstants.CENTER);
 	JLabel empty = new JLabel();
@@ -36,9 +38,10 @@ public class RightPanel extends JPanel {
 	private int rightAnswer;
 	private int score = 0;
 	private boolean firstQ = false;
+	private boolean winQ = false;
 	
 	public RightPanel() {
-		
+
 		this.setLayout(new BorderLayout());
 		
 		rightTop.setLayout(new BorderLayout());
@@ -64,8 +67,7 @@ public class RightPanel extends JPanel {
 		rightBottom.setLayout(new BorderLayout());
 		
 		rightBottom.add(jokerBtns, BorderLayout.NORTH);
-		rightBottom.add(answerBtns, BorderLayout.CENTER);
-		
+		rightBottom.add(answerBtns, BorderLayout.CENTER);	
 		
 	    this.add(rightTop, BorderLayout.NORTH);
 	    this.add(rightBottom, BorderLayout.CENTER);
@@ -86,6 +88,14 @@ public class RightPanel extends JPanel {
 	public void setFirstQ(boolean firstQ) {
 		this.firstQ = firstQ;
 	}
+	
+	public void setWinQ(boolean winQ) {
+		this.winQ = winQ;
+	}
+	
+	public boolean isWinQ() {
+		return winQ;
+	}
 
 	void setPlayerName(String playerName){
 		this.playerName.setText(playerName);
@@ -103,7 +113,16 @@ public class RightPanel extends JPanel {
 		this.lp = lp;	
 	}
 	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
 	Question nextQuestion(int category) {
+		answerBtns.getAnswerA().setBackground(null);
 		Random r = new Random();
 		Question q;
 		while(true) {
@@ -116,6 +135,16 @@ public class RightPanel extends JPanel {
 	}
 	
 	public void displayNextQuestion() {
+		answerBtns.getAnswerA().setBackground(null);
+		answerBtns.getAnswerB().setBackground(null);
+		answerBtns.getAnswerC().setBackground(null);
+		answerBtns.getAnswerD().setBackground(null);
+
+		answerBtns.getAnswerA().setEnabled(true);
+		answerBtns.getAnswerB().setEnabled(true);
+		answerBtns.getAnswerC().setEnabled(true);
+		answerBtns.getAnswerD().setEnabled(true);
+		
 		Question question = this.nextQuestion(currentQLevel);
 		Random r = new Random();
 		rightAnswer = r.nextInt(4);
@@ -149,10 +178,11 @@ public class RightPanel extends JPanel {
 				temp++;
 			}
 		}
-		currentQLevel++;
+		
 		if(!firstQ) {
 			firstQ = true;
 		}
+		currentQLevel++;
 	}
 	
 	public void resetGame() {
@@ -165,6 +195,8 @@ public class RightPanel extends JPanel {
 		this.displayNextQuestion();
 		score = 0;
 		displayScore();
+		lp.defaultPic();
+		winQ = false;
 	}
 	
 	public void increaseScore() {
@@ -183,18 +215,23 @@ public class RightPanel extends JPanel {
 		else if(score == 125000) {
 			score = 500000;
 		}
+		else if(score == 1000000) {
+			winQ = true;
+			System.out.println("WIN");
+		}
 		else {
 			score = score * 2;
 		}
 		displayScore();
 	}
+
 	
 	public void displayScore() {
 		konto.setText(Integer.toString(score));
 		lp.changePic();
 	}
 	
-	public int getFinalScore() {
+	public int getLastScore() {
 		if(score == 1000000) {
 			return 1000000;
 		}
@@ -208,8 +245,6 @@ public class RightPanel extends JPanel {
 			return 0;
 		}
 	}
-
-	
 }
 
 

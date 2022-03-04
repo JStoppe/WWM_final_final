@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.event.ComponentAdapter;
@@ -11,15 +10,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
+	
+	private static final long serialVersionUID = 1L;
 
-    public void createAndShowGUI() {
+	public void createAndShowGUI() {
 
     	JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(820,650);
+		frame.setSize(850,650);
 		frame.setTitle("Java Quiz Master 2022");
 		frame.getContentPane().setBackground(new Color(255,255,255));
-			
+		
 		JPanel mainPanel = new MainPanel();
 		frame.setContentPane(mainPanel);
 			
@@ -28,9 +29,7 @@ public class MainFrame extends JFrame {
 			
 		menu.setNamelabel(((MainPanel) mainPanel).getRightPanel());
 
-
 	    frame.addComponentListener(new ComponentAdapter() {
-	    	
 	    	@Override
 	        public void componentResized(ComponentEvent e) {
 	    		titleAlign(frame);
@@ -40,7 +39,7 @@ public class MainFrame extends JFrame {
 	    frame.setLocationRelativeTo(null);
 	    frame.setVisible(true);
     }
-
+    
 	    private void titleAlign(JFrame frame) {
 
 	        Font font = frame.getFont();
@@ -56,12 +55,5 @@ public class MainFrame extends JFrame {
 	        pad = String.format("%" + (spaceCount - 14) + "s", pad);
 	        frame.setTitle(pad + currentTitle);
 
-	    }
-
-	    public static void main(String[] args) {
-
-	        EventQueue.invokeLater(() -> {
-	            new MainFrame().createAndShowGUI();
-	        });
 	    }
 	}

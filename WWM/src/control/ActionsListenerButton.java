@@ -20,8 +20,9 @@ public class ActionsListenerButton implements ActionListener{
 	int buttonNumber;
 	
 	JDialog jd = new JDialog();
+	JDialog jdWin = new JDialog();
 	JLabel showWin = new JLabel("", SwingConstants.CENTER);
-	JButton playAgain = new JButton("nochmal spielen");
+	JButton playAgain = new JButton("Erneut spielen");
 	JButton cancel = new JButton("Abbrechen");
 	
 	public ActionsListenerButton(RightPanel rp, int buttonNumber) {
@@ -30,7 +31,7 @@ public class ActionsListenerButton implements ActionListener{
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {		
 		if(rp.getRightAnswer() == buttonNumber && rp.isFirstQ()) {
 			rp.increaseScore();
 			rp.displayNextQuestion();
@@ -41,15 +42,16 @@ public class ActionsListenerButton implements ActionListener{
 			cancel.addActionListener(this);
 			
 			jd.setLayout(new BorderLayout());
-			showWin.setText("Dein Gewinn beträgt: " + Integer.toString(rp.getFinalScore()));
+			showWin.setText("Dein Gewinn beträgt: " + Integer.toString(rp.getLastScore()));
 			jd.add(showWin, BorderLayout.PAGE_START);
 			jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
-			jp.add(Box.createHorizontalGlue());
 			jp.add(playAgain);
 			jp.add(cancel);
+			jp.add(Box.createHorizontalGlue());
 			jd.add(jp);
 			jd.setSize(350, 100);
 			jd.setTitle("Du hast verloren!");
+//			jd.setModal(true);
 			jd.getRootPane().setDefaultButton(playAgain);
 			jd.setLocationRelativeTo(null);
 			jd.setResizable(false);
@@ -57,16 +59,35 @@ public class ActionsListenerButton implements ActionListener{
 		}
 		if(e.getSource() == playAgain) {
 			rp.resetGame();
-//			playerName.setText(storeName);
-//			rightPanel.getPlayerName().setText(storeName);
 			jd.setVisible(false);
-//			String frage = "Frage 1: Hier steht nun die erste Frage?";
-//			question.setText(frage);
-	}
+			jdWin.setVisible(false);
+		}
 		if(e.getSource() == cancel) {
 			jd.dispose();
-//			jd.setVisible(false);
-	} 	
+			jdWin.dispose();
+		} 	
+//		if(rp.getRightAnswer() == buttonNumber && rp.isWinQ()) 9
+		if (rp.getCurrentQLevel() == 16 || rp.getScore() == 1000000 || rp.isWinQ()){
+			JPanel jpWin = new JPanel();
+			playAgain.addActionListener(this);
+			cancel.addActionListener(this);
+			
+			jdWin.setLayout(new BorderLayout());
+			showWin.setText("Dein Gewinn beträgt: " + Integer.toString(rp.getLastScore()));
+			jdWin.add(showWin, BorderLayout.PAGE_START);
+			jpWin.setLayout(new BoxLayout(jpWin, BoxLayout.LINE_AXIS));
+			jpWin.add(playAgain);
+			jpWin.add(cancel);
+			jpWin.add(Box.createHorizontalGlue());
+			jdWin.add(jpWin);
+			jdWin.setSize(350, 100);
+			jdWin.setTitle("Herzlichen Glückwunsch!");
+			jdWin.setModal(true);
+			jdWin.getRootPane().setDefaultButton(playAgain);
+			jdWin.setLocationRelativeTo(null);
+			jdWin.setResizable(false);
+			jdWin.setVisible(true);
+		}
 	}
 
 }
