@@ -30,14 +30,13 @@ public class ActionsListenerButton implements ActionListener{
 	public ActionsListenerButton(RightPanel rp, int buttonNumber) {
 		this.rp = rp;
 		this.buttonNumber = buttonNumber;
+		
 		jd.setLayout(new BorderLayout());
 		jd.setTitle("Du hast leider verloren!");
 		showWin.setText("Dein Gewinn beträgt: " + Integer.toString(rp.getLastScore()));
-		jd.add(showWin, BorderLayout.PAGE_START);
+
 		jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
-		jp.add(Box.createHorizontalGlue());
-		jp.add(playAgain);
-		jp.add(cancel);
+
 		jd.add(jp);
 		
 		playAgain.addActionListener(this);
@@ -45,11 +44,7 @@ public class ActionsListenerButton implements ActionListener{
 		
 		jdWin.setLayout(new BorderLayout());
 		jdWin.setTitle("Herzlichen Glückwunsch!");
-		jdWin.add(showWin, BorderLayout.PAGE_START);
 		jpWin.setLayout(new BoxLayout(jpWin, BoxLayout.LINE_AXIS));
-		jpWin.add(Box.createHorizontalGlue());
-		jpWin.add(playAgain);
-		jpWin.add(cancel);
 		jdWin.add(jpWin);
 
 	}
@@ -63,6 +58,10 @@ public class ActionsListenerButton implements ActionListener{
 		else{
 			jd.setSize(350, 100);
 			showWin.setText("Dein Gewinn beträgt: " + Integer.toString(rp.getLastScore()));
+			jd.add(showWin, BorderLayout.PAGE_START);
+			jp.add(Box.createHorizontalGlue());
+			jp.add(playAgain);
+			jp.add(cancel);
 			jd.setModal(true);
 			jd.getRootPane().setDefaultButton(playAgain);
 			jd.setLocationRelativeTo(null);
@@ -82,6 +81,10 @@ public class ActionsListenerButton implements ActionListener{
 		if (rp.getCurrentQLevel() == 16 || rp.getScore() == 500000 || rp.isWinQ()){			
 			jdWin.setSize(350, 100);
 			showWin.setText("Dein Gewinn beträgt: 1000000");
+			jdWin.add(showWin, BorderLayout.PAGE_START);
+			jpWin.add(Box.createHorizontalGlue());
+			jpWin.add(playAgain);
+			jpWin.add(cancel);
 			jdWin.setModal(true);
 			jdWin.getRootPane().setDefaultButton(playAgain);
 			jdWin.setLocationRelativeTo(null);
