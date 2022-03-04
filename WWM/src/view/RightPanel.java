@@ -1,4 +1,4 @@
-package view;
+	package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -39,6 +39,7 @@ public class RightPanel extends JPanel {
 	private int score = 0;
 	private boolean firstQ = false;
 	private boolean winQ = false;
+	
 	
 	public RightPanel() {
 
@@ -196,6 +197,7 @@ public class RightPanel extends JPanel {
 		score = 0;
 		displayScore();
 		lp.defaultPic();
+		jokerBtns.jokerReset();
 		winQ = false;
 	}
 	

@@ -56,6 +56,18 @@ public class JokerButton extends JPanel implements ActionListener {
 		answerC = ab.getAnswerC();
 		answerD = ab.getAnswerD();
 	}
+	
+	public void jokerReset() {
+		fifty.setBackground(null);
+		publikum.setBackground(null);
+		telefon.setBackground(null);
+		fifty.setForeground(null);
+		publikum.setForeground(null);
+		telefon.setForeground(null);
+		fifty.addActionListener(this);
+		publikum.addActionListener(this);
+		telefon.addActionListener(this);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
