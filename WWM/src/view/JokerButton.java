@@ -110,25 +110,70 @@ public class JokerButton extends JPanel implements ActionListener {
 			publikum.removeActionListener(this);
 			
 			Random r = new Random();
-			int low = 10;
-			int high = 80;
-			int result = r.nextInt(high-low) + low;
-			int randBtn = rand.nextInt(4);
+			int winner = rand.nextInt(80);
+			int b = rand.nextInt(100-winner);
+			int c = rand.nextInt(100-winner-b);
+			int d = rand.nextInt(100-winner-b-c);
+			int rightBnt = rp.getRightAnswer();
 			
-			switch(randBtn) {
-			case 0: rp.answerBtns.answerA.setBackground(Color.cyan);
-					rp.answerBtns.answerA.setText(answerA.getText() + " " + result + "%");
-			break;
-			case 1: rp.answerBtns.answerB.setBackground(Color.cyan);
-					rp.answerBtns.answerB.setText(answerB.getText() + " " + result + "%");
-			break;
-			case 2:	rp.answerBtns.answerC.setBackground(Color.cyan); 
-					rp.answerBtns.answerC.setText(answerC.getText() + " " + result + "%");
-			break;
-			case 3: rp.answerBtns.answerD.setBackground(Color.cyan);
-					rp.answerBtns.answerD.setText(answerD.getText() + " " + result + "%");
-			break;
-			}		
+			
+			if(rand.nextInt(11)<9) {
+				switch(rightBnt) {
+				case 0: rp.answerBtns.answerA.setBackground(Color.cyan);
+						rp.answerBtns.answerA.setText(answerA.getText() + " " + winner + "%");
+						rp.answerBtns.answerB.setText(answerB.getText() + " " + b + "%");
+						rp.answerBtns.answerC.setText(answerC.getText() + " " + c + "%");
+						rp.answerBtns.answerD.setText(answerD.getText() + " " + d + "%");
+				break;
+				case 1: rp.answerBtns.answerB.setBackground(Color.cyan);
+						rp.answerBtns.answerB.setText(answerB.getText() + " " + winner + "%");
+						rp.answerBtns.answerA.setText(answerA.getText() + " " + b + "%");
+						rp.answerBtns.answerC.setText(answerC.getText() + " " + c + "%");
+						rp.answerBtns.answerD.setText(answerD.getText() + " " + d + "%");
+				break;
+				case 2:	rp.answerBtns.answerC.setBackground(Color.cyan); 
+						rp.answerBtns.answerC.setText(answerC.getText() + " " + winner + "%");
+						rp.answerBtns.answerB.setText(answerB.getText() + " " + b + "%");
+						rp.answerBtns.answerA.setText(answerA.getText() + " " + c + "%");
+						rp.answerBtns.answerD.setText(answerD.getText() + " " + d + "%");
+				break;
+				case 3: rp.answerBtns.answerD.setBackground(Color.cyan);
+						rp.answerBtns.answerD.setText(answerD.getText() + " " + winner + "%");
+						rp.answerBtns.answerB.setText(answerB.getText() + " " + b + "%");
+						rp.answerBtns.answerC.setText(answerC.getText() + " " + c + "%");
+						rp.answerBtns.answerA.setText(answerA.getText() + " " + d + "%");
+				break;
+				}
+			}
+			else {
+				switch(rightBnt) {
+				case 2: rp.answerBtns.answerA.setBackground(Color.cyan);
+						rp.answerBtns.answerA.setText(answerA.getText() + " " + winner + "%");
+						rp.answerBtns.answerB.setText(answerB.getText() + " " + b + "%");
+						rp.answerBtns.answerC.setText(answerC.getText() + " " + c + "%");
+						rp.answerBtns.answerD.setText(answerD.getText() + " " + d + "%");
+				break;
+				case 0: rp.answerBtns.answerB.setBackground(Color.cyan);
+						rp.answerBtns.answerB.setText(answerB.getText() + " " + winner + "%");
+						rp.answerBtns.answerA.setText(answerA.getText() + " " + b + "%");
+						rp.answerBtns.answerC.setText(answerC.getText() + " " + c + "%");
+						rp.answerBtns.answerD.setText(answerD.getText() + " " + d + "%");
+				break;
+				case 3:	rp.answerBtns.answerC.setBackground(Color.cyan); 
+						rp.answerBtns.answerC.setText(answerC.getText() + " " + winner + "%");
+						rp.answerBtns.answerB.setText(answerB.getText() + " " + b + "%");
+						rp.answerBtns.answerA.setText(answerA.getText() + " " + c + "%");
+						rp.answerBtns.answerD.setText(answerD.getText() + " " + d + "%");
+				break;
+				case 1: rp.answerBtns.answerD.setBackground(Color.cyan);
+						rp.answerBtns.answerD.setText(answerD.getText() + " " + winner + "%");
+						rp.answerBtns.answerB.setText(answerB.getText() + " " + b + "%");
+						rp.answerBtns.answerC.setText(answerC.getText() + " " + c + "%");
+						rp.answerBtns.answerA.setText(answerA.getText() + " " + d + "%");
+				break;
+				}
+			}
+					
 		}
 		
 		
@@ -136,11 +181,6 @@ public class JokerButton extends JPanel implements ActionListener {
 			telefon.setBackground(Color.LIGHT_GRAY);
 			telefon.setForeground(Color.RED);
 			telefon.removeActionListener(this);
-			
-//			Random r = new Random();
-//			int low = 10;
-//			int high = 50;
-//			int result = r.nextInt(high-low) + low;
 			int randRight = rand.nextInt(2);
 			int randBtn = rand.nextInt(4);
 			
