@@ -98,9 +98,10 @@ public class MainMenu extends JMenuBar implements ActionListener, MenuListener {
 			if(e.getSource() == ok) {
 				storeName = enterName.getText();
 				nameLabel.setPlayerName(storeName);
-				nameLabel.displayNextQuestion();
-				nameLabel.setScore(0);
-				nameLabel.displayScore();
+				nameLabel.resetGame();
+//				nameLabel.displayNextQuestion();
+//				nameLabel.setScore(0);
+//				nameLabel.displayScore();
 				jd.setVisible(false);
 		}
 			if(e.getSource() == cancel) {

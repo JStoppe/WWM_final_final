@@ -24,10 +24,22 @@ public class ActionsListenerButton implements ActionListener{
 	JLabel showWin = new JLabel("", SwingConstants.CENTER);
 	JButton playAgain = new JButton("Erneut spielen");
 	JButton cancel = new JButton("Abbrechen");
+	JPanel jp = new JPanel();
 	
 	public ActionsListenerButton(RightPanel rp, int buttonNumber) {
 		this.rp = rp;
 		this.buttonNumber = buttonNumber;
+		jd.setLayout(new BorderLayout());
+		showWin.setText("Dein Gewinn beträgt: " + Integer.toString(rp.getLastScore()));
+		jd.add(showWin, BorderLayout.PAGE_START);
+		jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
+		jp.add(playAgain);
+		jp.add(cancel);
+		jp.add(Box.createHorizontalGlue());
+		jd.add(jp);
+		playAgain.addActionListener(this);
+		cancel.addActionListener(this);
+		
 	}
 	
 	@Override
@@ -36,22 +48,11 @@ public class ActionsListenerButton implements ActionListener{
 			rp.increaseScore();
 			rp.displayNextQuestion();
 		}
-		else if(rp.isFirstQ()){
-			JPanel jp = new JPanel();
-			playAgain.addActionListener(this);
-			cancel.addActionListener(this);
+		else{
 			
-			jd.setLayout(new BorderLayout());
-			showWin.setText("Dein Gewinn beträgt: " + Integer.toString(rp.getLastScore()));
-			jd.add(showWin, BorderLayout.PAGE_START);
-			jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
-			jp.add(playAgain);
-			jp.add(cancel);
-			jp.add(Box.createHorizontalGlue());
-			jd.add(jp);
 			jd.setSize(350, 100);
-			jd.setTitle("Du hast verloren!");
-//			jd.setModal(true);
+			showWin.setText("Dein Gewinn beträgt: " + Integer.toString(rp.getLastScore()));
+			jd.setModal(true);
 			jd.getRootPane().setDefaultButton(playAgain);
 			jd.setLocationRelativeTo(null);
 			jd.setResizable(false);
@@ -67,13 +68,13 @@ public class ActionsListenerButton implements ActionListener{
 			jdWin.dispose();
 		} 	
 //		if(rp.getRightAnswer() == buttonNumber && rp.isWinQ()) 9
-		if (rp.getCurrentQLevel() == 16 || rp.getScore() == 1000000 || rp.isWinQ()){
+		if (rp.getCurrentQLevel() == 16 || rp.getScore() == 500000 || rp.isWinQ()){
 			JPanel jpWin = new JPanel();
 			playAgain.addActionListener(this);
 			cancel.addActionListener(this);
 			
 			jdWin.setLayout(new BorderLayout());
-			showWin.setText("Dein Gewinn beträgt: " + Integer.toString(rp.getLastScore()));
+			showWin.setText("Dein Gewinn beträgt: 1000000");
 			jdWin.add(showWin, BorderLayout.PAGE_START);
 			jpWin.setLayout(new BoxLayout(jpWin, BoxLayout.LINE_AXIS));
 			jpWin.add(playAgain);

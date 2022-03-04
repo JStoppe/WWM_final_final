@@ -30,6 +30,7 @@ public class LeftPanel extends JPanel {
 	}
 	
 	public void defaultPic() {
+//		System.out.println(trp.getCurrentQLevel());
 		img = new ImageIcon(this.getClass().getResource("/Gewinnstufe0.png")).getImage();
 		scaledImage = img.getScaledInstance(level.getWidth(),level.getHeight(),Image.SCALE_SMOOTH);
 		level.setIcon(new ImageIcon(scaledImage));

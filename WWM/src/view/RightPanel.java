@@ -178,11 +178,11 @@ public class RightPanel extends JPanel {
 				temp++;
 			}
 		}
-		
+//		System.out.println(currentQLevel);                      hier
 		if(!firstQ) {
 			firstQ = true;
 		}
-		currentQLevel++;
+			currentQLevel++;
 	}
 	
 	public void resetGame() {
